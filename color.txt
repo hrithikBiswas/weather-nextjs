@@ -1,0 +1,13 @@
+#3f2866
+#432a76
+#48319D
+#251c37
+#d94bb6
+#341f54
+#
+#
+#
+#
+#
+
+https://restcountries.com/v3.1/alpha/bd

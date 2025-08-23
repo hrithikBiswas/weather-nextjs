@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #29233C;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +12,75 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
+  background: linear-gradient(97deg, rgba(41, 35, 60, 1) 0%, rgba(63, 39, 103, 1) 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.search-bar-shadow {
+  box-shadow: 0px 0px 20px 0px rgba(37, 28, 55, 0.69);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(37, 28, 55, 0.69);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(37, 28, 55, 0.69);
+}
+
+.weather-overview-bg {
+  background: linear-gradient(192deg, rgba(34, 28, 50, 1) 0%, rgba(47, 31, 75, 1) 100%);
+}
+
+.shake-x {
+  -webkit-animation: horizontal-shaking 0.3s;
+  animation: horizontal-shaking 0.3s;
+}
+
+@-webkit-keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0)
+  }
+
+  25% {
+    transform: translateX(5px)
+  }
+
+  50% {
+    transform: translateX(-5px)
+  }
+
+  75% {
+    transform: translateX(5px)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0)
+  }
+
+  25% {
+    transform: translateX(5px)
+  }
+
+  50% {
+    transform: translateX(-5px)
+  }
+
+  75% {
+    transform: translateX(5px)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
 }
