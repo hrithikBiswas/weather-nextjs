@@ -37,7 +37,7 @@ const CurrentStatus = ({ weatherInfo }) => {
                 <div className="rounded-lg bg-[#422b68] px-3 py-1">C</div>
             </div>
 
-            <div className="flex justify-between gap-10">
+            <div className="flex justify-between">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-0.5">
                         <h1 className="text-4xl font-semibold">{dayName}</h1>
