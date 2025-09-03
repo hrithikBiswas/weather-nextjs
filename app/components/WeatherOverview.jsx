@@ -11,23 +11,7 @@ import SkeletonCurrentStatus from './skeleton/SkeletonCurrentStatus';
 import SkeletonTodaysHighlight from './skeleton/SkeletonTodaysHighlight';
 
 const WeatherOverview = () => {
-    // const { searchLocation } = useWeatherContext();
     const { weatherInfo, isLoading, isError, error } = useWeather();
-    // const {
-    //     data: weatherInfo,
-    //     isLoading,
-    //     isError,
-    //     error,
-    // } = useQuery({
-    //     queryKey: ['weather', searchLocation],
-    //     queryFn: async () => {
-    //         const response = await fetchWeatherInfo(searchLocation);
-
-    //         return response;
-    //     },
-    //     retry: 1,
-    //     refetchOnReconnect: true, // disable auto-refetch when reconnected
-    // });
 
     if (isError) return <div>Error: {error.message}</div>;
     if (weatherInfo?.cod === '404') return <div>Location not found</div>;
