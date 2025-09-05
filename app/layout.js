@@ -1,5 +1,5 @@
-import WeatherContextProvider from '@/app/context/WeatherContextProvider';
-import QueryProvider from '@/app/lib/QueryProvider';
+import WeatherContextProvider from '@/app/providers/WeatherContextProvider';
+import QueryProvider from '@/app/providers/QueryProvider';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 

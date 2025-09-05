@@ -1,0 +1,1 @@
+https://api.openweathermap.org/data/2.5/forecast?q=dhaka&appid=b2927f64db9f46be75166b6ca63aaf6c&units=metric

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SkeletonCurrentStatus = () => {
     return (
-        <div className="animate-pulse max-h-fit col-span-5 lg:col-span-2 bg-[#341f54]  rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
+        <div className="animate-pulse col-span-5 lg:col-span-2 bg-[#341f54]  rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
             <div className="w-[109.71px] h-[28px] bg-[#422b68] rounded-lg mb-4"></div>
             <div className="flex justify-between">
                 <div className="flex flex-col gap-8">

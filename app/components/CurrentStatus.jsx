@@ -26,7 +26,7 @@ const CurrentStatus = ({ weatherInfo }) => {
             : Math.floor(weatherInfo?.main?.temp_min);
 
     return (
-        <div className="max-h-fit overflow-hidden col-span-5 lg:col-span-2 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
+        <div className="overflow-hidden col-span-5 lg:col-span-2 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
             <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2 rounded-lg bg-[#422b68] px-3 py-1">
                     <img className="w-4" src="/location.svg" alt="" />

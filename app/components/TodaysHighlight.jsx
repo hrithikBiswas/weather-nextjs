@@ -10,7 +10,7 @@ const TodaysHighlight = ({ weatherInfo }) => {
     const { time: currentTime } = TimestampDetails(weatherInfo?.dt);
 
     return (
-        <div className="max-h-fit overflow-hidden col-span-5 lg:col-span-3 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
+        <div className="overflow-hidden col-span-5 lg:col-span-3 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
             <h2 className="text-2xl font-semibold tracking-wide">
                 Today's Highlight
             </h2>

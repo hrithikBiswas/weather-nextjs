@@ -16,11 +16,19 @@ export function TimestampDetails(timestamp, options = {}) {
     });
 
     const dayName = date.toLocaleDateString(locale, { weekday: 'long' });
+    const shortDayName = date.toLocaleDateString(locale, { weekday: 'short' });
+
+    const hour = date.toLocaleTimeString(locale, {
+        hour12: true,
+        hour: 'numeric',
+    });
 
     return {
         formattedDate,
         time,
         dayName,
+        shortDayName,
+        hour,
     };
 }
 

@@ -1,12 +1,13 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { fetchWeatherInfo } from '@/app/api/api';
-import useWeatherContext from '@/app/context/useWeatherContext';
+// import { useQuery } from '@tanstack/react-query';
+// import { fetchWeatherInfo } from '@/app/api/api';
+// import useWeatherContext from '@/app/context/useWeatherContext';
 import useWeather from '@/app/hook/useWeather';
 
 import CurrentStatus from '@/app/components/CurrentStatus';
 import TodaysHighlight from '@/app/components/TodaysHighlight';
+import ForeCast from '@/app/components/ForeCast';
 import SkeletonCurrentStatus from './skeleton/SkeletonCurrentStatus';
 import SkeletonTodaysHighlight from './skeleton/SkeletonTodaysHighlight';
 
@@ -28,6 +29,7 @@ const WeatherOverview = () => {
             ) : (
                 <TodaysHighlight weatherInfo={weatherInfo} />
             )}
+            <ForeCast />
         </div>
     );
 };
