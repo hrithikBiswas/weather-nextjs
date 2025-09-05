@@ -1,7 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { TimestampDetails } from '@/app/utils/weatherUtils';
+import {
+    TimestampDetails,
+    formattedTemperature,
+} from '@/app/utils/weatherUtils';
 
 function ForecastList({ forecastWeatherInfo }) {
     return (
@@ -16,10 +19,6 @@ function ForecastList({ forecastWeatherInfo }) {
         >
             {forecastWeatherInfo?.list?.map((forecast, index) => {
                 const { hour, shortDayName } = TimestampDetails(forecast?.dt);
-                const currentTemperature =
-                    forecast?.main?.temp >= 0
-                        ? Math.ceil(forecast?.main?.temp)
-                        : Math.floor(forecast?.main?.temp);
 
                 return (
                     <SwiperSlide
@@ -36,7 +35,13 @@ function ForecastList({ forecastWeatherInfo }) {
                                 height={50}
                             />
                             <div className="flex gap-1">
-                                <span>{currentTemperature}°C</span>
+                                <span>
+                                    {formattedTemperature(
+                                        forecast?.main?.temp,
+                                        'current'
+                                    )}
+                                    °C
+                                </span>
                             </div>
                         </div>
                     </SwiperSlide>

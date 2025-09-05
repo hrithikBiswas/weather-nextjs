@@ -1,29 +1,10 @@
 import React from 'react';
-import {
-    convertMetersToKilometers,
-    TimestampDetails,
-} from '@/app/utils/weatherUtils';
+import { TimestampDetails } from '@/app/utils/weatherUtils';
+import { formattedTemperature } from '@/app/utils/weatherUtils';
 
 const CurrentStatus = ({ weatherInfo }) => {
     const { formattedDate, time, dayName } = TimestampDetails(weatherInfo?.dt);
     const countryCode = weatherInfo?.sys?.country || 'BD'; // Default to Bangladesh if not available
-
-    const currentTemperature =
-        weatherInfo?.main?.temp >= 0
-            ? Math.ceil(weatherInfo?.main?.temp)
-            : Math.floor(weatherInfo?.main?.temp);
-    const feelsLikeTemperature =
-        weatherInfo?.main?.feels_like >= 0
-            ? Math.ceil(weatherInfo?.main?.feels_like)
-            : Math.floor(weatherInfo?.main?.feels_like);
-    const highTemperature =
-        weatherInfo?.main?.temp_max >= 0
-            ? Math.ceil(weatherInfo?.main?.temp_max)
-            : Math.floor(weatherInfo?.main?.temp_max);
-    const lowTemperature =
-        weatherInfo?.main?.temp_min >= 0
-            ? Math.ceil(weatherInfo?.main?.temp_min)
-            : Math.floor(weatherInfo?.main?.temp_min);
 
     return (
         <div className="overflow-hidden col-span-5 lg:col-span-2 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
@@ -50,13 +31,21 @@ const CurrentStatus = ({ weatherInfo }) => {
                     </div>
                     <div>
                         <h1 className="text-4xl font-semibold mb-1">
-                            {currentTemperature}°C
+                            {formattedTemperature(
+                                weatherInfo?.main?.temp,
+                                'current'
+                            )}
+                            °C
                         </h1>
                         <h5 className="tracking-wider text-gray-300">
                             Feels Like
                         </h5>
                         <h5 className="tracking-wider text-gray-300">
-                            {feelsLikeTemperature}°
+                            {formattedTemperature(
+                                weatherInfo?.main?.feels_like,
+                                'feels_like'
+                            )}
+                            °
                         </h5>
                     </div>
                 </div>
@@ -73,8 +62,20 @@ const CurrentStatus = ({ weatherInfo }) => {
                             {weatherInfo?.weather[0]?.main}
                         </h2>
                         <div className="flex gap-3 tracking-wider text-gray-300">
-                            <span>High: {highTemperature}</span>
-                            <span>Low: {lowTemperature}</span>
+                            <span>
+                                High:{' '}
+                                {formattedTemperature(
+                                    weatherInfo?.main?.temp_max,
+                                    'temp_max'
+                                )}
+                            </span>
+                            <span>
+                                Low:{' '}
+                                {formattedTemperature(
+                                    weatherInfo?.main?.temp_min,
+                                    'temp_min'
+                                )}
+                            </span>
                         </div>
                     </div>
                 </div>

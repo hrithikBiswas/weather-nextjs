@@ -43,3 +43,14 @@ export const convertMetersToKilometers = (meters) => {
 
     return formattedValue;
 };
+
+export const formattedTemperature = (temperature, type = 'current') => {
+    if (temperature === undefined || temperature === null) {
+        return `${type} N/A`;
+    }
+
+    const roundedTemperature =
+        temperature >= 0 ? Math.ceil(temperature) : Math.floor(temperature);
+
+    return roundedTemperature;
+};
