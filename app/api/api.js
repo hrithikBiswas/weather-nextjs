@@ -3,22 +3,31 @@ const forecastBaseUrl = process.env.NEXT_PUBLIC_FORECAST_BASE_URL;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const restcountry = process.env.NEXT_PUBLIC_RESTCOUNTRY_API_URL;
 
-export const fetchWeatherInfo = async (searchLocation) => {
+export const fetchWeatherInfo = async (query) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     try {
         const res = await fetch(
-            `${baseUrl}?q=${searchLocation}&appid=${apiKey}&units=metric`
+            `${baseUrl}?q=${query}&appid=${apiKey}&units=metric`
         );
 
         if (!res.ok) {
-            throw new Error('Failed to fetch weather data');
+            // API responded but with an error (404, 401, 500, etc.)
+            throw new Error(res.status);
         }
 
         return await res.json();
     } catch (error) {
-        console.error('Error fetching weather data:', error);
-        throw error;
+        if (error instanceof TypeError && error.message === 'Failed to fetch') {
+            // Usually indicates network issue (disconnected, DNS error, CORS issue, etc.)
+            console.error(
+                'Network error: Please check your internet connection.'
+            );
+            throw new Error('ERR_INTERNET_DISCONNECTED');
+        } else {
+            console.error('Error fetching weather data:', error);
+            throw error; // rethrow so caller can handle it
+        }
     }
 };
 
@@ -31,26 +40,23 @@ export const fetchForecastInfo = async (query) => {
         );
 
         if (!res.ok) {
-            throw new Error('Failed to fetch weather data');
+            // API responded but with an error (404, 401, 500, etc.)
+            throw new Error(`API Error: ${res.status} ${res.statusText}`);
         }
 
         return await res.json();
     } catch (error) {
-        console.error('Error fetching weather data:', error);
-        throw error;
+        if (error instanceof TypeError && error.message === 'Failed to fetch') {
+            // Usually indicates network issue (disconnected, DNS error, CORS issue, etc.)
+            console.error(
+                'Network error: Please check your internet connection.'
+            );
+            throw new Error(
+                'Network error: Unable to connect. Please check your internet.'
+            );
+        } else {
+            console.error('Error fetching weather data:', error);
+            throw error; // rethrow so caller can handle it
+        }
     }
 };
-
-// export const fetchCountryName = async (countryCode) => {
-//     try {
-//         const res = await fetch(`${restcountry}/${countryCode}`);
-//         if (!res.ok) {
-//             throw new Error('Failed to fetch country name');
-//         }
-//         const data = await res.json();
-//         return data[0].name.common;
-//     } catch (error) {
-//         console.error('Error fetching country name:', error);
-//         throw error;
-//     }
-// };

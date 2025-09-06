@@ -9,8 +9,6 @@ import ForecastList from './ForecastList';
 const ForeCast = () => {
     const { forecastWeatherInfo, isLoading } = useForecastWeather();
 
-    console.log(forecastWeatherInfo);
-
     return (
         <div className="max-h-fit overflow-hidden col-span-5 bg-[#341f54] rounded-2xl px-4 sm:px-6 py-6 sm:py-8">
             <h2 className="text-2xl font-semibold tracking-wide">

@@ -12,7 +12,7 @@ const CurrentStatus = ({ weatherInfo }) => {
                 <div className="flex items-center gap-2 rounded-lg bg-[#422b68] px-3 py-1">
                     <img className="w-4" src="/location.svg" alt="" />
                     <span>
-                        {weatherInfo.name}, {countryCode}
+                        {weatherInfo?.name}, {countryCode}
                     </span>
                 </div>
                 <div className="rounded-lg bg-[#422b68] px-3 py-1">C</div>

@@ -6,11 +6,20 @@ import TodaysHighlight from '@/app/components/TodaysHighlight';
 import ForeCast from '@/app/components/ForeCast';
 import SkeletonCurrentStatus from '@/app/components/skeleton/SkeletonCurrentStatus';
 import SkeletonTodaysHighlight from '@/app/components/skeleton/SkeletonTodaysHighlight';
+import CityNotFound from '@/app/components/error/CityNotFound';
+import InternetDisconnectingError from './error/InternetDisconnectingError';
 
 const WeatherOverview = () => {
     const { weatherInfo, isLoading, isError, error } = useWeather();
 
-    if (isError) return <div>Error: {error.message}</div>;
+    if (isError)
+        return error.message === '404' ? (
+            <CityNotFound />
+        ) : error.message === 'ERR_INTERNET_DISCONNECTED' ? (
+            <InternetDisconnectingError />
+        ) : (
+            error.message
+        );
     if (weatherInfo?.cod === '404') return <div>Location not found</div>;
 
     return (
